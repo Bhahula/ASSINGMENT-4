@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Temperature Converter</title>
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <button onclick="startConverter()">Convert Temperature</button>
+    <script>
+        function celsiusToFahrenheit(celsius) {
+            return (celsius * 9 / 5) + 32;
+        }
+
+        function fahrenheitToCelsius(fahrenheit) {
+            return (fahrenheit - 32) * 5 / 9;
+        }
+
+        function startConverter() {
+            let temperature = prompt("Enter the temperature value:");
+            if (temperature === null) {
+                alert("Conversion cancelled.");
+                return;
+            }
+
+            temperature = Number(temperature);
+            if (isNaN(temperature)) {
+                alert("Please enter a valid number.");
+                return;
+            }
+
+            let unit = prompt("Enter the unit (C for Celsius, F for Fahrenheit):");
+            if (unit === null) {
+                alert("Conversion cancelled.");
+                return;
+            }
+
+            unit = unit.trim().toUpperCase();
+            let convertedTemperature;
+
+            if (unit === "C") {
+                convertedTemperature = celsiusToFahrenheit(temperature);
+                alert(`${temperature}°C is equal to ${convertedTemperature.toFixed(2)}°F.`);
+            } else if (unit === "F") {
+                convertedTemperature = fahrenheitToCelsius(temperature);
+                alert(`${temperature}°F is equal to ${convertedTemperature.toFixed(2)}°C.`);
+            } else {
+                alert("Please enter a valid unit (C or F).");
+            }
+        }
+    </script>
+</body>
+</html>
